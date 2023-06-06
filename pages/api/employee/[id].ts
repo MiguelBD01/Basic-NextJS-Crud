@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 export default async function handler(req: NextApiRequest, res:NextApiResponse) {
     
     const employeeId = req.query.id;
-    const {name, direccion, rfc, curp} = req.body; // Still not sure if I'll go with this approach
+    const {name, direccion, rfc, curp} = req.body; // Not sure this is the best approach
 
     if(req.method === 'DELETE'){
         const employee = await prisma.employee.delete({
@@ -19,8 +19,6 @@ export default async function handler(req: NextApiRequest, res:NextApiResponse) 
             where: {
                 id: Number(employeeId)
             },
-            // Figure out what to do in here
-            // Se me ocurre obtener los datos de req.body, something like: const {name, direccion, rfc, curp} = req.body;  
             data: {
               name: name,
               direccion: direccion,

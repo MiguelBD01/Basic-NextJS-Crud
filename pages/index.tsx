@@ -137,7 +137,7 @@ export default function Home(props: EmployeeProps) {
 }
 
 export async function getServerSideProps (){
-  const employees = await prisma.employee.findMany() // findMany() returns an array 
+  const employees = await prisma.employee.findMany() // findMany() returns an array, that's why I'm defining the interface EmployeeProps as an object array
 
   return{
     props:{
